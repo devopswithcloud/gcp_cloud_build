@@ -15,6 +15,7 @@ steps:
 substitutions:
   _CLOUD_RUN_SERVICE_NAME: cloud-run-deploy-new
   _REGION: us-central1
-
+options:
+  logging: CLOUD_LOGGING_ONLY
 #args, envs
 
