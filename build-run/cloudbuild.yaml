@@ -2,7 +2,7 @@ steps:
 # Build the container image 
 # docker build -t imagename:tagname .
 - name: gcr.io/cloud-builders/docker
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/infra-radius-438300-r7/docker-repo/cloud-build:v2', '.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/infra-radius-438300-r7/docker-repo/cloud-build:v2', 'build-run/.']
 # Push the container image to registry
 # docker push imagename:tagname
 - name: gcr.io/cloud-builders/docker
