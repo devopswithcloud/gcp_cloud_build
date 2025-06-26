@@ -2,7 +2,7 @@ steps:
 # BUild the container image
 # docker build -t imagename .
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/ancient-tractor-462500-u5/docker-repo/new-python:v1', '.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/ancient-tractor-462500-u5/docker-repo/new-python:v1', 'build-run/.']
 # Push the container image to Artifact Registry
 # docker push us-central1-docker.pkg.dev/ancient-tractor-462500-u5/docker-repo/new-python:v1
 - name: 'gcr.io/cloud-builders/docker'
