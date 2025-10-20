@@ -2,17 +2,19 @@ steps:
 # BUild the container image
 # docker build -t imagename .
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/ancient-tractor-462500-u5/docker-repo/new-python:v1', 'build-run/.']
-# Push the container image to Artifact Registry
-# docker push us-central1-docker.pkg.dev/ancient-tractor-462500-u5/docker-repo/new-python:v1
+  args: ['build' , '-t', 'us-central1-docker.pkg.dev/rugged-abacus-464109-r6/docker-repo/python:v1', '.']
+# Push the container image to registry
+# docker push us-central1-docker.pkg.dev/rugged-abacus-464109-r6/docker-repo/python:v1
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/ancient-tractor-462500-u5/docker-repo/new-python:v1']  
+  args: ['push', 'us-central1-docker.pkg.dev/rugged-abacus-464109-r6/docker-repo/python:v1']
 # Deploy the container image to Cloud Run
 # gcloud run deploy new-python --image us-central1-docker.pkg.dev/ancient-tractor-462500-u5/docker-repo/new-python:v1 --region us-central1 --allow-unauthenticated
+# Deploy Container image to cloud run
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'new-python',
-         '--image', 'us-central1-docker.pkg.dev/ancient-tractor-462500-u5/docker-repo/new-python:v1',
-         '--region', 'us-central1',
-         '--allow-unauthenticated']
+  args: ['run', 'deploy', 'python-app', '--image', 
+        'us-central1-docker.pkg.dev/rugged-abacus-464109-r6/docker-repo/python:v1', 
+        '--region', '${_REGION}', '--allow-unauthenticated']
 options:
   logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _REGION: us-central1
