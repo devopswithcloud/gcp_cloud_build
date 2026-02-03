@@ -2,7 +2,7 @@ steps:
 # Build the Docker image 
 # docker build -t us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1 .
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1', '.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1', 'build-run/.']
 # Push the image to Google Artifact Registry 
 # docker push us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1
 - name: 'gcr.io/cloud-builders/docker'
