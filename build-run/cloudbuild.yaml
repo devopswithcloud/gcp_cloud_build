@@ -13,5 +13,5 @@ steps:
   args: ['run', 'deploy', 'python-app', '--image',
         'us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1',
         '--region', 'us-central1', '--allow-unauthenticated']
-
-
+options:
+  logging: CLOUD_LOGGING_ONLY
