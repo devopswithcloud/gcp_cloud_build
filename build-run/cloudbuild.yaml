@@ -1,20 +1,17 @@
-steps:
-# BUild the container image
-# docker build -t imagename .
+steps: 
+# Build the Docker image 
+# docker build -t us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1 .
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build' , '-t', 'us-central1-docker.pkg.dev/rugged-abacus-464109-r6/docker-repo/python:v1', 'build-run/.']
-# Push the container image to registry
-# docker push us-central1-docker.pkg.dev/rugged-abacus-464109-r6/docker-repo/python:v1
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1', '.']
+# Push the image to Google Artifact Registry 
+# docker push us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/rugged-abacus-464109-r6/docker-repo/python:v1']
-# Deploy the container image to Cloud Run
-# gcloud run deploy new-python --image us-central1-docker.pkg.dev/ancient-tractor-462500-u5/docker-repo/new-python:v1 --region us-central1 --allow-unauthenticated
-# Deploy Container image to cloud run
+  args: ['push', 'us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1']
+# Deploy the image to cloud run 
+# gcloud run deploy python-app --image us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1 --region us-central1 --allow-unauthenticated 
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'python-app', '--image', 
-        'us-central1-docker.pkg.dev/rugged-abacus-464109-r6/docker-repo/python:v1', 
-        '--region', '${_REGION}', '--allow-unauthenticated']
-options:
-  logging: CLOUD_LOGGING_ONLY
-substitutions:
-  _REGION: us-central1
+  args: ['run', 'deploy', 'python-app', '--image',
+        'us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1',
+        '--region', 'us-central1', '--allow-unauthenticated']
+
+
