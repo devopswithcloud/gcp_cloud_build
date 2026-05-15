@@ -3,7 +3,7 @@
 steps:
 # Take me a cloud builder image with docker installled
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/project-fe6816d0-c7fc-4c9b-bd7/docker-repo/my-app:v1', '.']
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/project-fe6816d0-c7fc-4c9b-bd7/docker-repo/my-app:v1', 'build-run/.']
 # Push the image to artifact registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'us-central1-docker.pkg.dev/project-fe6816d0-c7fc-4c9b-bd7/docker-repo/my-app:v1']
