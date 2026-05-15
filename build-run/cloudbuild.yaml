@@ -1,17 +1,12 @@
-steps: 
-# Build the Docker image 
-# docker build -t us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1 .
+# This file is equivalent to Jenkinsfile in jenkins, workflow in github acitons
+############################################################
+steps:
+# Take me a cloud builder image with docker installled
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1', 'build-run/.']
-# Push the image to Google Artifact Registry 
-# docker push us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/project-fe6816d0-c7fc-4c9b-bd7/docker-repo/my-app:v1', '.']
+# Push the image to artifact registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1']
-# Deploy the image to cloud run 
-# gcloud run deploy python-app --image us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1 --region us-central1 --allow-unauthenticated 
+  args: ['push', 'us-central1-docker.pkg.dev/project-fe6816d0-c7fc-4c9b-bd7/docker-repo/my-app:v1']
+# Deploy image to cloud run 
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['run', 'deploy', 'python-app', '--image',
-        'us-central1-docker.pkg.dev/proven-wavelet-481608-k1/docker-images/app:v1',
-        '--region', 'us-central1', '--allow-unauthenticated']
-options:
-  logging: CLOUD_LOGGING_ONLY
+  args: ['run', 'deploy', 'my-app', '--image', 'us-central1-docker.pkg.dev/project-fe6816d0-c7fc-4c9b-bd7/docker-repo/my-app:v1', '--region', 'us-central1', '--allow-unauthenticated']
