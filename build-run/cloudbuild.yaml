@@ -10,3 +10,5 @@ steps:
 # Deploy image to cloud run 
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['run', 'deploy', 'my-app', '--image', 'us-central1-docker.pkg.dev/project-fe6816d0-c7fc-4c9b-bd7/docker-repo/my-app:v1', '--region', 'us-central1', '--allow-unauthenticated']
+options:
+  logging: CLOUD_LOGGING_ONLY
